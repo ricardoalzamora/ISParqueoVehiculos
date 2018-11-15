@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuevo usuario</title>
+</head>
+<body>
+    <main>
+        <div class="container">
+            <form th:action="@{/crearUsuario}" th:object="${usuario}" method="post">
+                <table class="table">
+                    <tr>
+                        <td>Id</td>
+                        <td>
+                            <input placeholder="Id" type="text" th:field="*{id}" th:errorclass="'form-control alert-danger'"/>
+                            <small class="form-text text-danger" th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></small>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Documento</td>
+                        <td>
+                            <input placeholder="Documento" type="text" th:field="*{documento}" th:errorclass="'form-control alert-danger'"/>
+                            <small class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{documento}"></small>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Nombre</td>
+                        <td>
+                            <input placeholder="Nombre" type="text" th:field="*{nombre}" th:errorclass="'form-control alert-danger'"/>
+                            <small class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input class="btn btn-primary" type="submit" value="Enviar"/></td>
+                    </tr>
+
+                </table>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
