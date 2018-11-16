@@ -1,6 +1,7 @@
 package com.is.sistemaparqueovehiculos.controllers;
 
 import com.is.sistemaparqueovehiculos.models.entity.Usuario;
+import com.is.sistemaparqueovehiculos.models.service.RegistroService;
 import com.is.sistemaparqueovehiculos.models.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,14 +15,19 @@ import javax.validation.Valid;
 import java.util.Map;
 
 @Controller
+@RequestMapping(value = "/Cliente")
 public class UsuarioController {
 
     @Autowired
     UsuarioService usuarioService;
 
+    @Autowired
+    RegistroService registroService;
+
     @RequestMapping("/mostrarUsuarios")
     String mostrarUsuarios(Model model){
         model.addAttribute("usuarios", usuarioService.obtener());
+        model.addAttribute("titulo", "Lista de usuarios");
         return "mostrarUsuarios";
     }
 
@@ -42,6 +48,12 @@ public class UsuarioController {
         usuarioService.crear(usuario);
         status.setComplete();
         return  "redirect:mostrarUsuarios";
+    }
+
+    @RequestMapping(value = "/mostrarRegistros")
+    public String mostrarRegistros(Model model){
+        model.addAttribute("registros", registroService.obtenerRegistrosPorDocumento(123L));
+        return "usuario/ClienteIndex";
     }
 
 }
