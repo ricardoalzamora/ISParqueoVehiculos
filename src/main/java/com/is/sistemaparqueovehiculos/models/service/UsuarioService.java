@@ -1,7 +1,6 @@
 package com.is.sistemaparqueovehiculos.models.service;
 
 import com.is.sistemaparqueovehiculos.models.dao.IUsuarioDao;
-import com.is.sistemaparqueovehiculos.models.entity.Registro;
 import com.is.sistemaparqueovehiculos.models.entity.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -46,6 +45,6 @@ public class UsuarioService {
     }
 
     public Usuario obtenerPorId(Long documento){
-        return usuarioDao.findByDocumento(documento);
+        return usuarioDao.getOne(documento);
     }
 }
