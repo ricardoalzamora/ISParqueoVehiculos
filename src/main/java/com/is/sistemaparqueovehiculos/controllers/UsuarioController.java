@@ -28,6 +28,7 @@ public class UsuarioController {
     String mostrarUsuarios(Model model){
         model.addAttribute("usuarios", usuarioService.obtener());
         model.addAttribute("titulo", "Lista de usuarios");
+        model.addAttribute("controlador", "/Cliente");
         return "mostrarUsuarios";
     }
 
@@ -47,12 +48,13 @@ public class UsuarioController {
         }
         usuarioService.crear(usuario);
         status.setComplete();
-        return  "redirect:mostrarUsuarios";
+        return  "redirect:Cliente/mostrarUsuarios";
     }
 
     @RequestMapping(value = "/mostrarRegistros")
     public String mostrarRegistros(Model model){
         model.addAttribute("registros", registroService.obtenerRegistrosPorDocumento(123L));
+        model.addAttribute("controlador", "/Cliente");
         return "usuario/ClienteIndex";
     }
 
