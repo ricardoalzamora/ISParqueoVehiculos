@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -23,11 +24,13 @@ public class TipoUsuario implements Serializable {
     private List<Usuario> usuarios;
 
     public TipoUsuario() {
+        this.usuarios = new ArrayList<Usuario>();
     }
 
     public TipoUsuario(@NotNull Long id, @NotEmpty String nombre) {
         this.id = id;
         this.nombre = nombre;
+        this.usuarios = new ArrayList<Usuario>();
     }
 
     public Long getId() {

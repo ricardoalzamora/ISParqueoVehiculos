@@ -24,4 +24,36 @@ public class Infraccion implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id", referencedColumnName = "id", insertable = false, updatable = false)
     private TipoInfraccion tipoInfraccion;
+
+    public Infraccion() {
+    }
+
+    public Infraccion(@NotNull Registro registro, @NotNull TipoInfraccion tipoInfraccion) {
+        this.registro = registro;
+        this.tipoInfraccion = tipoInfraccion;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Registro getRegistro() {
+        return registro;
+    }
+
+    public void setRegistro(Registro registro) {
+        this.registro = registro;
+    }
+
+    public TipoInfraccion getTipoInfraccion() {
+        return tipoInfraccion;
+    }
+
+    public void setTipoInfraccion(TipoInfraccion tipoInfraccion) {
+        this.tipoInfraccion = tipoInfraccion;
+    }
 }

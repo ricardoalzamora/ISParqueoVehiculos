@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -53,4 +54,86 @@ public class Registro implements Serializable {
 
     @OneToMany(mappedBy = "registro", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Infraccion> infracciones;
+
+    public Registro() {
+        this.infracciones = new ArrayList<Infraccion>();
+    }
+
+    public Registro(@NotNull Date fechaEntrada, Date fechaSalida, @NotNull Vehiculo vehiculo, @NotNull Zona zonaAsignada, @NotNull Usuario vigilante, @NotNull Usuario cliente) {
+        this.fechaEntrada = fechaEntrada;
+        this.fechaSalida = fechaSalida;
+        this.vehiculo = vehiculo;
+        this.zonaAsignada = zonaAsignada;
+        this.vigilante = vigilante;
+        this.cliente = cliente;
+        this.infracciones = new ArrayList<Infraccion>();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Date getFechaEntrada() {
+        return fechaEntrada;
+    }
+
+    public void setFechaEntrada(Date fechaEntrada) {
+        this.fechaEntrada = fechaEntrada;
+    }
+
+    public Date getFechaSalida() {
+        return fechaSalida;
+    }
+
+    public void setFechaSalida(Date fechaSalida) {
+        this.fechaSalida = fechaSalida;
+    }
+
+    public Vehiculo getVehiculo() {
+        return vehiculo;
+    }
+
+    public void setVehiculo(Vehiculo vehiculo) {
+        this.vehiculo = vehiculo;
+    }
+
+    public Zona getZonaAsignada() {
+        return zonaAsignada;
+    }
+
+    public void setZonaAsignada(Zona zonaAsignada) {
+        this.zonaAsignada = zonaAsignada;
+    }
+
+    public Usuario getVigilante() {
+        return vigilante;
+    }
+
+    public void setVigilante(Usuario vigilante) {
+        this.vigilante = vigilante;
+    }
+
+    public Usuario getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Usuario cliente) {
+        this.cliente = cliente;
+    }
+
+    public List<Infraccion> getInfracciones() {
+        return infracciones;
+    }
+
+    public void setInfracciones(List<Infraccion> infracciones) {
+        this.infracciones = infracciones;
+    }
+
+    public void agregarInfraccion(Infraccion infraccion){
+        this.infracciones.add(infraccion);
+    }
 }
