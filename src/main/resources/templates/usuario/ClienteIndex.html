@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head th:replace="layout/layout::head"></head>
+<body>
+
+    <header th:replace="layout/layout::header"></header>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Registro</th>
+            <th scope="col">Fecha de entrada</th>
+            <th scope="col">Fecha de salida</th>
+            <th scope="col">Placa del vehículo</th>
+            <th scope="col">Estado del vehículo</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="registro: ${registros}">
+            <td th:text="${registro.id}"></td>
+            <td th:text="${registro.fechaEntrada}"></td>
+            <td th:text="${registro.fechaSalida}"></td>
+            <td th:text="${registro.getVehiculo().placa}"></td>
+            <td th:text="${registro.getVehiculo().getEstadoVehiculo().nombre}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <footer th:replace="layout/layout::footer"></footer>
+
+</body>
+</html>
