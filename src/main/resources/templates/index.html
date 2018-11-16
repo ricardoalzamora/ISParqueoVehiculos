@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Inicio</title>
-</head>
+<head th:replace="layout/layout::head"></head>
 <body>
+    <header th:replace="layout/layout::header"></header>
     <p th:text="Inicio"></p>
+
+    <footer th:replace="layout/layout::footer"></footer>
 </body>
 </html>
