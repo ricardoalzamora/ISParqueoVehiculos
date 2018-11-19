@@ -7,9 +7,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class IndexController {
 
-    @RequestMapping("/")
+    @RequestMapping(value = "/")
     public String inicio(Model model){
         model.addAttribute("titulo", "Inicio");
         return "index";
+    }
+
+    @RequestMapping(value = "/*")
+    public String redirrecionar(){
+        return "redirect:/";
     }
 }
