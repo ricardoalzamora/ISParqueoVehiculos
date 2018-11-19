@@ -15,8 +15,8 @@ import javax.validation.Valid;
 import java.util.Map;
 
 @Controller
-@RequestMapping(value = "/Cliente")
-public class UsuarioController {
+@RequestMapping(value = "/Vigilante")
+public class VigilanteController {
 
     @Autowired
     UsuarioService usuarioService;
@@ -28,7 +28,6 @@ public class UsuarioController {
     String mostrarUsuarios(Model model){
         model.addAttribute("usuarios", usuarioService.obtener());
         model.addAttribute("titulo", "Lista de usuarios");
-        model.addAttribute("controlador", "/Cliente");
         return "mostrarUsuarios";
     }
 
@@ -48,7 +47,7 @@ public class UsuarioController {
         }
         usuarioService.crear(usuario);
         status.setComplete();
-        return  "redirect:Cliente/mostrarUsuarios";
+        return  "redirect:Vigilante/mostrarUsuarios";
     }
 
     @RequestMapping(value = "/mostrarRegistros")
