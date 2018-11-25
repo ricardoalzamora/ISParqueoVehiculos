@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head th:replace="layout/layout::head"></head>
+<body>
+    <header th:replace="layout/layout::header"></header>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Documento Cliente</th>
+            <th scope="col">Nombre Cliente</th>
+            <th scope="col">Placa</th>
+            <th scope="col">Documento Vigilante</th>
+            <th scope="col">Nombre Vigilante</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="registro: ${registros}">
+            <td th:text="${registro.getId()}"></td>
+            <td th:text="${registro.getCliente().getDocumento()}"></td>
+            <td th:text="${registro.getCliente().getNombre() + registro.getCliente().getApellido()}"></td>
+            <td th:text="${registro.getVehiculo().getPlaca()}"></td>
+            <td th:text="${registro.getVigilante().getDocumento()}"></td>
+            <td th:text="${registro.getVigilante().getNombre() + registro.getVigilante().getApellido()}"></td>
+            <!--<td><a class="btn btn-secondary btn-xs" th:href="@{/form/} + ${cliente.id}" th:text="'Editar'"></a></td>
+            <td><a class="btn btn-danger btn-xs" th:href="@{/eliminar/} + ${cliente.id}" th:text="'Eliminar'"></a></td>-->
+        </tr>
+        </tbody>
+    </table>
+
+    <footer th:replace="layout/layout::footer"></footer>
+</body>
+</html>
