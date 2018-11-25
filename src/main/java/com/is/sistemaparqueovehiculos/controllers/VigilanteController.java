@@ -3,7 +3,9 @@ package com.is.sistemaparqueovehiculos.controllers;
 import com.is.sistemaparqueovehiculos.models.entity.Usuario;
 import com.is.sistemaparqueovehiculos.models.service.RegistroService;
 import com.is.sistemaparqueovehiculos.models.service.UsuarioService;
+import netscape.security.Principal;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,9 +27,10 @@ public class VigilanteController {
     RegistroService registroService;
 
     @RequestMapping("/mostrarUsuarios")
-    String mostrarUsuarios(Model model){
+    String mostrarUsuarios(Model model, Principal principal){
         model.addAttribute("usuarios", usuarioService.obtener());
         model.addAttribute("titulo", "Lista de usuarios");
+        model.addAttribute("nombreusuario", SecurityContextHolder.getContext().getAuthentication().getName());
         return "mostrarUsuarios";
     }
 
