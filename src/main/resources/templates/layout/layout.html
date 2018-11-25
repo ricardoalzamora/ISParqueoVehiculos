@@ -17,10 +17,24 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
+                    <ul sec:authorize="hasRole('ADMIN')" class="navbar-nav mr-auto">
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/Vigilante/mostrarUsuarios}">Mostrar Usuarios</a>
                         </li>
+                    </ul>
+                    <ul sec:authorize="hasRole('CLIENTE')" class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/Cliente/mostrarRegistros}">Mostrar Registros</a>
+                        </li>
+                    </ul>
+                    <ul sec:authorize="!isAuthenticated()" class="navbar-nav navbar-right">
+                        <li><a class="btn btn-outline-primary" th:href="@{/login}">Inicia sesión</a></li>
+                    </ul>
+                    <ul sec:authorize="isAuthenticated()" class="navbar-nav navbar-right">
+                        <li><a class="btn btn-outline-primary" th:href="@{/logout}">Cerrar sesión</a></li>
+                    </ul>
+                    <ul th:if="nombreusuario" class="navbar-nav navbar-right">
+                        <p th:text="*{nombreusuario}"></p>
                     </ul>
                 </div>
             </nav>
@@ -30,6 +44,9 @@
             <div class="container">
                 <h4 th:text="'Sistema de parqueo de vehículos.'"></h4>
                 <p th:text="'IS - Ricardo Alzamora - Habib Navarro - Yoicer Galvis.'"></p>
+            </div>
+            <div sec:authorize="isAuthenticated()" class="container">
+                <p sec:authentication="name"></p>
             </div>
         </footer>
 
