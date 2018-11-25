@@ -31,5 +31,5 @@ dependencies {
     runtimeOnly('org.springframework.boot:spring-boot-devtools')
     runtimeOnly('mysql:mysql-connector-java')
     compile "org.springframework.boot:spring-boot-starter-security"
-    compile "org.thymeleaf.extras:thymeleaf-extras-springsecurity4"
+    compile "org.thymeleaf.extras:thymeleaf-extras-springsecurity5"
 }
