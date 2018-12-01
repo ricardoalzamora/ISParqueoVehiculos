@@ -16,7 +16,6 @@ public class Registro implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @NotNull
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -33,7 +32,7 @@ public class Registro implements Serializable {
     private Date fechaSalida;
 
     @NotNull
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_vehiculo", referencedColumnName = "id")
     private Vehiculo vehiculo;
 
@@ -44,19 +43,24 @@ public class Registro implements Serializable {
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "documento_vigilante", referencedColumnName = "documento", insertable = false, updatable = false)
+    @JoinColumn(name = "documento_vigilante", referencedColumnName = "documento")
     private Usuario vigilante;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "documento_cliente", referencedColumnName = "documento",insertable = false, updatable = false)
+    @JoinColumn(name = "documento_cliente", referencedColumnName = "documento")
     private Usuario cliente;
 
-    @OneToMany(mappedBy = "registro", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "registro", fetch = FetchType.LAZY)
     private List<Infraccion> infracciones;
 
     public Registro() {
         this.infracciones = new ArrayList<Infraccion>();
+        this.cliente = new Usuario();
+        this.vigilante = new Usuario();
+        this.zonaAsignada = new Zona();
+        this.vehiculo = new Vehiculo();
+        this.fechaEntrada = new Date();
     }
 
     public Registro(@NotNull Date fechaEntrada, Date fechaSalida, @NotNull Vehiculo vehiculo, @NotNull Zona zonaAsignada, @NotNull Usuario vigilante, @NotNull Usuario cliente) {

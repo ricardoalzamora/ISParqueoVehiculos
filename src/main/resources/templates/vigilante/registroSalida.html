@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head th:replace="layout/layout::head"></head>
+<body>
+
+<header th:replace="layout/layout::header"></header>
+
+<main>
+
+    <form method="post" th:action="@{/Vigilante/mostrarRegistros}">
+        <label for="placa" class="sr-only">Placa</label>
+        <input type="text" id="placa" name="placa" placeholder="Placa" required autofocus>
+        <button class="btn btn-primary" type="submit">Buscar</button>
+    </form>
+
+    <a class="btn btn-secondary" th:href="@{/Vigilante/mostrarRegistros}">Limpiar</a>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Registro</th>
+            <th scope="col">Documento Usuario</th>
+            <th scope="col">Nombre Usuario</th>
+            <th scope="col">Fecha de entrada</th>
+            <th scope="col">Fecha de salida</th>
+            <th scope="col">Placa del vehículo</th>
+            <th scope="col">Salir</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="registro: ${registros}">
+            <div th:if="${registro.fechaSalida == null}">
+                <td th:text="${registro.id}"></td>
+                <td th:text="${registro.getCliente().getDocumento()}"></td>
+                <td th:text="${registro.getCliente().getNombre() + ' ' + registro.getCliente().getApellido()}"></td>
+                <td th:text="${registro.fechaEntrada}"></td>
+                <td th:text="${registro.fechaSalida}"></td>
+                <td th:text="${registro.getVehiculo().placa}"></td>
+                <td>
+                    <form method="post" th:action="@{/Vigilante/darSalida}">
+                        <label for="placa" class="sr-only">Placa</label>
+                        <input type="hidden" id="id" name="id" th:value="${registro.id}">
+                        <button class="btn btn-primary" type="submit">Dar salida</button>
+                    </form>
+                </td>
+            </div>
+        </tr>
+        </tbody>
+    </table>
+</main>
+
+
+<footer th:replace="layout/layout::footer"></footer>
+
+</body>
+</html>

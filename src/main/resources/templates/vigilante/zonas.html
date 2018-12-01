@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head th:replace="layout/layout::head"></head>
+<body>
+
+<header th:replace="layout/layout::header"></header>
+
+<main>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Zona</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Capacidad</th>
+            <th scope="col">Capacidad Utilizada</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="zona: ${zonas}">
+            <td th:text="${zona.id}"></td>
+            <td th:text="${zona.getNombre()}"></td>
+            <td th:text="${zona.getCapacidad()}"></td>
+            <td th:text="${zona.getCapacidadUtilizada()}"></td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+
+
+<footer th:replace="layout/layout::footer"></footer>
+
+</body>
+</html>

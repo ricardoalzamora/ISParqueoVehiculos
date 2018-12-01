@@ -15,6 +15,9 @@ public class RegistroService {
     @Qualifier("registrodao")
     private IRegistroDao registroDao;
 
+    public Registro obtenerPorId(Long id){
+        return registroDao.getOne(id);
+    }
 
     public List<Registro> obtenerRegistrosPorId(Long documento){
         return registroDao.findAllById(documento);
@@ -22,5 +25,17 @@ public class RegistroService {
 
     public List<Registro> obtenerRegistrosPorDocumento(Long documento){
         return registroDao.findAllByClienteDocumento(documento);
+    }
+
+    public void guardar(Registro registro){
+        registroDao.save(registro);
+    }
+
+    public List<Registro> obtener(){
+        return registroDao.findAll();
+    }
+
+    public List<Registro> obtenerPorPlaca(String placa){
+        return  registroDao.findAllByVehiculoPlaca(placa);
     }
 }

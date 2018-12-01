@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head th:replace="layout/layout::head"></head>
+<body>
+
+    <header th:replace="layout/layout::header"></header>
+
+    <main class="card">
+
+        <div class="container card-body">
+            <form th:action="@{/Vigilante/registrarEntrada}" th:object="${registro}" method="post">
+
+                <input placeholder="Documento de usuario" type="text" th:field="*{cliente.documento}" th:errorclass="'form-control alert-danger'"/>
+
+                <input placeholder="Placa del vehiculo" type="text" th:field="*{vehiculo.placa}" th:errorclass="'form-control alert-danger'"/>
+
+                <select th:fiel="*{zonaAsignada.id}">
+                    <option th:each="zona: ${zonas}" th:value="${zona.getId()}" th:text="${zona.getNombre()}"></option>
+                </select>
+                <input class="btn btn-primary" type="submit" value="Registrar"/>
+            </form>
+        </div>
+
+    </main>
+
+    <footer th:replace="layout/layout::footer"></footer>
+</body>
+</html>

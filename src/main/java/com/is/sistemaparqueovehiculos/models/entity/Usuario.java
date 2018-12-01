@@ -44,10 +44,10 @@ public class Usuario implements Serializable {
     @NotNull
     private int genero;
 
-    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
     private List<Registro> registrosCliente;
 
-    @OneToMany(mappedBy = "vigilante", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "vigilante", fetch = FetchType.LAZY)
     private List<Registro> registrosVigilante;
 
     @NotNull

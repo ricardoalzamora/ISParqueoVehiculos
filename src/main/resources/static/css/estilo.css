@@ -1,0 +1,18 @@
+main{
+    width: 80%;
+    margin: auto;
+}
+
+#div-login{
+    width: 50% ;
+}
+
+@media only screen and (max-width: 600px) {
+    main {
+        width: 100%;
+    }
+
+    #div-login{
+        width: 100% ;
+    }
+}

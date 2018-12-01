@@ -12,7 +12,6 @@ public class Vehiculo implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -24,7 +23,7 @@ public class Vehiculo implements Serializable {
     @JoinColumn(name = "id_estado", referencedColumnName = "id")
     private EstadoVehiculo estadoVehiculo;
 
-    @OneToOne(mappedBy = "vehiculo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "vehiculo", fetch = FetchType.LAZY)
     private Registro registro;
 
     public Vehiculo() {

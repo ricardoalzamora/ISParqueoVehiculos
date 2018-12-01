@@ -10,20 +10,22 @@
     <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous"/>
 </head>
 <body>
-<div class="container">
-    <form class="form-signin" method="post" th:action="@{/login}">
-        <h2 class="form-signin-heading">Inicia sesión</h2>
-        <div th:if="error">
-            <p th:text="*{error}"></p>
-        </div>
-        <p>
-            <label for="username" class="sr-only">Username</label>
-            <input type="text" id="username" name="username" class="form-control" placeholder="Documento" required autofocus>
-        </p>
-        <p>
-            <label for="password" class="sr-only">Password</label>
-            <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required>
-        </p>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar</button>
-    </form>
-</body></html>
+    <div id="div-login" class="container">
+        <form class="form-signin" method="post" th:action="@{/login}">
+            <h2 class="form-signin-heading">Inicia sesión</h2>
+            <div th:if="error">
+                <p th:text="*{error}"></p>
+            </div>
+            <p>
+                <label for="username" class="sr-only">Username</label>
+                <input type="text" id="username" name="username" class="form-control" placeholder="Documento" required autofocus>
+            </p>
+            <p>
+                <label for="password" class="sr-only">Password</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required>
+            </p>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar</button>
+        </form>
+    </div>
+</body>
+</html>

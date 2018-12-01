@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head th:replace="layout/layout::head"></head>
+<body>
+
+    <header th:replace="layout/layout::header"></header>
+
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h3>Documento: </h3>
+                    <p th:text="${usuario.documento}"></p>
+                </div>
+                <div class="col">
+                    <h3>Nombre: </h3>
+                    <p th:text="${usuario.nombre + ' ' + usuario.apellido}"></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h3>Email: </h3>
+                    <p th:text="${usuario.email}"></p>
+                </div>
+                <div class="col">
+                    <h3>Celular: </h3>
+                    <p th:text="${usuario.celular}"></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h3>Dirección: </h3>
+                    <p th:text="${usuario.direccion}"></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer th:replace="layout/layout::footer"></footer>
+</body>
+</html>

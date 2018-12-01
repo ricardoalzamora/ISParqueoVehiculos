@@ -31,7 +31,7 @@ public class Zona implements Serializable {
     @NotNull
     private int habilitada;
 
-    @OneToMany(mappedBy = "zonaAsignada", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "zonaAsignada", fetch = FetchType.LAZY)
     private List<Registro> registros;
 
     public Zona() {
